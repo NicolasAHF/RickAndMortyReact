@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     module: {
@@ -9,6 +10,10 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test:/\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
@@ -17,5 +22,6 @@ module.exports = {
             template: './public/index.html',
             filename: './index.html',
         }),
+        new ESLintPlugin()
     ]
 }
